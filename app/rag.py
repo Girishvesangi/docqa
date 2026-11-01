@@ -3,6 +3,7 @@ import os
 import anthropic
 import psycopg
 from pgvector.psycopg import register_vector
+from psycopg_pool import ConnectionPool
 from pypdf import PdfReader
 from sentence_transformers import SentenceTransformer
 
@@ -11,20 +12,30 @@ DB_URL=os.environ.get("DATABASE_URL","postgresql://postgres:pw@localhost:5432/po
 embedder=SentenceTransformer("all-MiniLM-L6-v2")
 client = anthropic.Anthropic()
 
-conn=psycopg.connect(DB_URL,autocommit=True)
-conn.execute("CREATE EXTENSION IF NOT EXISTS vector")
-register_vector(conn)
-conn.execute(
+with psycopg.connect(DB_URL,autocommit=True) as setup:
+
+    setup.execute("CREATE EXTENSION IF NOT EXISTS vector")
+    setup.execute(
     """
     CREATE TABLE IF NOT EXISTS chunks (
     id bigserial PRIMARY KEY,
     source text, page int, content text,
     embedding vector(384)
     )
-"""
-)
-conn.execute("CREATE INDEX IF NOT EXISTS chunks_hnsw ON chunks USING hnsw (embedding vector_cosine_ops)")
+    """
+    )
+    setup.execute("CREATE INDEX IF NOT EXISTS chunks_hnsw ON chunks USING hnsw (embedding vector_cosine_ops)")
 
+
+pool=ConnectionPool(
+    DB_URL,
+    min_size=1,
+    max_size=5,
+    kwargs={"autocommit":True},
+    configure=register_vector,
+    check=ConnectionPool.check_connection,
+    open=True,
+)
 SYSTEM = """Answer the question using only the numbered sources provided.
 Cite sources inline like [1] or [2][3]. If the sources do not contain the answer,
 say "I couldn't find that in the documents." Never make up information."""
@@ -41,12 +52,13 @@ def ingest(path,name):
     reader=PdfReader(path)
     rows=[]
     for page_num, page in enumerate(reader.pages, start=1):
-        for piece in chunk(page.extract_text() or ""):
+        text=(page.extract_text() or "").replace("\x00", "")
+        for piece in chunk(text):
             rows.append((name,page_num,piece))
     if not rows:
         return 0
     vectors= embedder.encode([r[2] for r in rows])
-    with conn.transaction(), conn.cursor() as cur:
+    with pool.connection() as conn, conn.transaction(), conn.cursor() as cur:
         cur.execute("DELETE FROM chunks WHERE source=%s",(name,))
         cur.executemany(
             "INSERT INTO chunks (source,page,content,embedding ) VALUES (%s, %s, %s, %s)",
@@ -57,10 +69,11 @@ def ingest(path,name):
 
 def retrieve(question,k=5):
     q=embedder.encode(question)
-    return conn.execute(
-        "SELECT source, page, content FROM chunks ORDER BY embedding <=> %s LIMIT %s",
-        (q, k),
-    ).fetchall()
+    with pool.connection() as conn:
+        return conn.execute(
+            "SELECT source, page, content FROM chunks ORDER BY embedding <=> %s LIMIT %s",
+            (q, k),
+        ).fetchall()
 
 def answer(question):
     hits=retrieve(question)

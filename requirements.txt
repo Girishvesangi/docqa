@@ -2,7 +2,7 @@ fastapi
 uvicorn[standard]
 python-multipart
 anthropic
-psycopg[binary]
+psycopg[binary,pool]
 pgvector
 pypdf
 sentence-transformers
