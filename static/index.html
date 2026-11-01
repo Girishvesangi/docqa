@@ -1,0 +1,36 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Doc Q&A</title>
+<style>body{font:16px system-ui;max-width:700px;margin:40px auto;padding:0 16px}input,button{font:inherit}#q{width:75%}</style>
+<h1>Ask the documents</h1>
+<p><input type="file" id="files" accept=".pdf" multiple> <button id="up">Upload</button> <span id="upmsg"></span></p>
+<p><input id="q" placeholder="Ask a question"> <button id="ask">Ask</button></p>
+<div id="out"></div>
+<script>
+const $ = (id) => document.getElementById(id);
+$("up").onclick = async () => {
+  const fd = new FormData();
+  for (const f of $("files").files) fd.append("files", f);
+  $("upmsg").textContent = "Indexing...";
+  const r = await fetch("/upload", { method: "POST", body: fd });
+  $("upmsg").textContent = r.ok ? "Done" : "Failed: " + (await r.text());
+};
+$("ask").onclick = async () => {
+  $("out").textContent = "Thinking...";
+  const r = await fetch("/ask", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question: $("q").value }),
+  });
+  const data = await r.json();
+  $("out").innerHTML = "";
+  const p = document.createElement("p");
+  p.textContent = data.answer;
+  $("out").append(p);
+  for (const c of data.citations) {
+    const s = document.createElement("small");
+    s.textContent = `[${c.id}] ${c.file}, page ${c.page}`;
+    $("out").append(s, document.createElement("br"));
+  }
+};
+</script>
