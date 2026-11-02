@@ -1,0 +1,13 @@
+RETRIEVAL MISS: How many hours a week do I have to work at minimum on STEM OPT?
+RETRIEVAL MISS: I'm a nonresident alien working in the US for a foreign company. Can my treaty country let me avoid US tax on my wages if I'm only here a short time?
+WRONG ANSWER: I'm a nonresident alien working in the US for a foreign company. Can my treaty country let me avoid US tax on my wages if I'm only here a short time? -> The sources don't directly answer this. They say that U.S. tax treaties can reduce or exempt certain income for residents of foreign countries, and th
+WRONG ANSWER: If a Ukrainian employee works in the U.S. for a foreign employer, what's the maximum number of days they can be in the country and still have their pay exempt from U.S. tax under the treaty? -> A Ukrainian resident can exempt U.S. employment income under the treaty if they are in the United States for **no more than 183 days during the tax ye
+WRONG ANSWER: What do I do with the A-Number box on the I-765 if I've never had one? -> The sources give conflicting instructions. The official USCIS Form I-765 instructions say that if you do not have an A-Number, you should "type or pri
+RETRIEVAL MISS: Where do I find my SEVIS ID number for the I-765 form?
+WRONG ANSWER: Where do I find my SEVIS ID number for the I-765 form? -> The I-765 instructions don't say where to find your SEVIS number. They only say that Item Number 26 asks for your Student and Exchange Visitor Informa
+WRONG ANSWER: How long can I be unemployed during STEM OPT before I violate my status? -> The documents give a 90-day limit, but it applies to post-completion OPT in general, not specifically to the STEM extension. Once post-completion OPT 
+RETRIEVAL MISS: How soon after I get my new I-20 do I have to send in the I-765 to USCIS?
+WRONG ANSWER: How soon after I get my new I-20 do I have to send in the I-765 to USCIS? -> I couldn't find that in the documents. The sources don't mention Form I-20 or any deadline for filing Form I-765 after receiving one.  The sources do 
+WRONG ANSWER: How far before my program ends can I file Form I-765 for post-completion OPT, and is there a deadline after the program? -> For most students applying for post-completion OPT under category (c)(3)(B), you can file Form I-765 **up to 90 days before** your program end date, a
+
+upgrade4: hit@5 = 82%   answer accuracy = 78%

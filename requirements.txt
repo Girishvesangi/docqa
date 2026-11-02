@@ -6,3 +6,6 @@ psycopg[binary,pool]
 pgvector
 pypdf
 sentence-transformers
+cryptography
+pymupdf4llm
+pymupdf>=2.0

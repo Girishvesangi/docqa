@@ -1,0 +1,20 @@
+RETRIEVAL MISS: When is my first I-983 evaluation due?
+WRONG ANSWER: When is my first I-983 evaluation due? -> I couldn't find that in the documents. The sources cover Form I-765 filing and the OPT application process, but none of them mention Form I-983 or whe
+RETRIEVAL MISS: For the progress evaluation part of the I-983, what am I supposed to write about in my self-review?
+WRONG ANSWER: For the progress evaluation part of the I-983, what am I supposed to write about in my self-review? -> I couldn't find that in the documents. The only I-983 source provided is a page 4 fragment ending with "...n, and final program evaluation" [5]. It do
+RETRIEVAL MISS: How many hours a week do I have to work at minimum on STEM OPT?
+WRONG ANSWER: How many hours a week do I have to work at minimum on STEM OPT? -> I couldn't find that in the documents. None of the sources states a minimum number of hours per week for STEM OPT.  Some related information appears i
+RETRIEVAL MISS: I'm a nonresident alien working in the US for a foreign company. Can my treaty country let me avoid US tax on my wages if I'm only here a short time?
+WRONG ANSWER: I'm a nonresident alien working in the US for a foreign company. Can my treaty country let me avoid US tax on my wages if I'm only here a short time? -> Possibly, but the excerpts don't give the short-stay rules. Treaties can exempt certain income from U.S. tax, and the exemptions vary by country and b
+WRONG ANSWER: Can a nonresident alien claim the standard deduction on their tax return? -> No. Nonresident aliens cannot claim the standard deduction [4]. There is one exception: students and business apprentices from India may qualify under
+RETRIEVAL MISS: What do I do with the A-Number box on the I-765 if I've never had one?
+WRONG ANSWER: What do I do with the A-Number box on the I-765 if I've never had one? -> If you've never had an A-Number, write **N/A** in the box. The Lehigh I-765 guide says that if a field does not apply to you, you should "write N/A in
+WRONG ANSWER: Where do I find my SEVIS ID number for the I-765 form? -> Your SEVIS ID number is on your I-20. The Lehigh I-765 guide says it "can be found on the top left corner of your I-20" [1].  A UConn OPT guide places
+RETRIEVAL MISS: How soon after I get my new I-20 do I have to send in the I-765 to USCIS?
+WRONG ANSWER: How soon after I get my new I-20 do I have to send in the I-765 to USCIS? -> I couldn't find that in the documents.  The sources don't mention Form I-20 or give a specific deadline for filing Form I-765 after receiving one. Sou
+RETRIEVAL MISS: How much do I need to pay USCIS for my OPT application, and how should I pay it?
+WRONG ANSWER: How much do I need to pay USCIS for my OPT application, and how should I pay it? -> The documents don't state the dollar amount of the OPT filing fee or how to pay it.  They do point you to where the fee is listed. The Form I-765 inst
+RETRIEVAL MISS: If I'm still working on my thesis and I apply for post-completion OPT, what happens if I don't finish my degree requirements by the OPT end date?
+WRONG ANSWER: If I'm still working on my thesis and I apply for post-completion OPT, what happens if I don't finish my degree requirements by the OPT end date? -> I couldn't find that in the documents.  The sources don't say what happens if a student is still working on a thesis when post-completion OPT ends. Th
+
+upgrade1: hit@5 = 64%   answer accuracy = 69%
