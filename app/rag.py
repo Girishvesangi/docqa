@@ -193,9 +193,6 @@ def retrieve(question, k=5, candidates=20, expand=False):
     return sorted(rows, key=lambda r: r["score"], reverse=True)[:k]
 
 
-def retrieve(question, k=5):
-    return rrf([vector_search(question, 20), keyword_search(question, 20)])[:k]
-
 def answer(question):
     hits=retrieve(question)
     if not hits:
