@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv*/
+ 
+# Secrets
+.env
+ 
+# macOS
+.DS_Store
+ 
+# Downloaded documents (fetch with scripts/download_pdfs.sh)
+pdfs/
+ 
