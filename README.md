@@ -55,6 +55,7 @@ In-scope questions were drafted with Claude from random pages (so the page label
 ```bash
 python -m evals.run_eval "label-for-this-run"
 ```
+The eval set is specific to my test documents. Write your own questions.jsonl for yours, or draft one with python -m evals.make_questions pdfs/
 
 ### Results
 
