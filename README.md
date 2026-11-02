@@ -2,7 +2,7 @@
 
 Ask questions about a set of PDFs and get answers that cite the exact file and page, or an honest "I couldn't find that in the documents."
 
-The demo corpus is the paperwork F-1 international students deal with: USCIS Form I-765 instructions, the ICE I-983 training plan, IRS Publications 519 and 901, and university OPT guides.
+Point it at any folder of PDFs (handbooks, policies, manuals) and ask questions in plain English.
 
 **Live demo:** https://docqa.fly.dev
 
